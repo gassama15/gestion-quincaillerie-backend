@@ -106,9 +106,9 @@ public class Product implements Serializable {
 	}
 
 
-	public Category getCategory() {
-		return category;
-	}
+//	public Category getCategory() {
+//		return category;
+//	}
 
 
 	public void setCategory(Category category) {
