@@ -3,6 +3,7 @@ package sn.simplon.quincaillerie.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import sn.simplon.quincaillerie.dao.CategoryRepository;
@@ -24,7 +25,7 @@ public class CategoryService {
 	}
 	
 	public List<Category> getAllCategories() {
-		return this.categoryRepository.findAll();
+		return this.categoryRepository.findAll(Sort.by(Sort.Direction.DESC, "idCategorie"));
 	}
 	
 	public Category updateCategory(Category category) {

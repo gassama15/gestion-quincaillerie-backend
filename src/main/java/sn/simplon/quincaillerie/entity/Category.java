@@ -11,6 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity(name = "categorie")
 public class Category implements Serializable {
 
@@ -22,8 +28,9 @@ public class Category implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCategorie;
 	private String libelle;
-	@OneToMany(fetch = FetchType.LAZY )
+	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "category_id")
+	@JsonManagedReference
 	private List<Product> products;
 	
 	public Category(Long idCategorie, String libelle) {

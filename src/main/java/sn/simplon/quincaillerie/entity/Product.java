@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity(name = "produit")
 public class Product implements Serializable {
@@ -27,6 +32,7 @@ public class Product implements Serializable {
 	private Long qte;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "category_id")
+	@JsonBackReference
 	private Category category;
 	
 	
@@ -106,9 +112,9 @@ public class Product implements Serializable {
 	}
 
 
-//	public Category getCategory() {
-//		return category;
-//	}
+	public Category getCategory() {
+		return category;
+	}
 
 
 	public void setCategory(Category category) {
@@ -126,7 +132,13 @@ public class Product implements Serializable {
 	}
 	
 	
+	public Long getCategoryId() {
+		return category.getIdCategorie();
+	}
 	
+	public String getCategoryLibelle() {
+		return category.getLibelle();
+	}
 	
 	
 	
